@@ -1,0 +1,29 @@
+<h3>組み合わせ作成</h3>
+
+<%= button_to 'シャッフル開始', {controller: 'home', action: 'shuffle'}, {method: :get }%>
+<br>
+
+<h5>対象者一覧</h5>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Section</th>
+      <th>next</th>
+      <th>Last</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shuffle.each do |f| %>
+      <tr>
+        <td><%= f.name %></td>
+        <td><%= f.section %></td>
+        <td><%= f.next %></td>
+        <td><%= f.last %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>

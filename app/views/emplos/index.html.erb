@@ -1,12 +1,11 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Emplos</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Name</th>
       <th>Section</th>
+      <th>next</th>
       <th>Last</th>
       <th colspan="3"></th>
     </tr>
@@ -17,15 +16,14 @@
       <tr>
         <td><%= emplo.name %></td>
         <td><%= emplo.section %></td>
+        <td><%= emplo.next %></td>
         <td><%= emplo.last %></td>
-        <td><%= link_to 'Show', emplo %></td>
         <td><%= link_to 'Edit', edit_emplo_path(emplo) %></td>
         <td><%= link_to 'Destroy', emplo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
 <br>
 
 <%= link_to 'New Emplo', new_emplo_path %>

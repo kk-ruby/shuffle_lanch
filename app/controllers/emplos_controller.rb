@@ -28,7 +28,7 @@ class EmplosController < ApplicationController
 
     respond_to do |format|
       if @emplo.save
-        format.html { redirect_to @emplo, notice: 'Emplo was successfully created.' }
+        format.html { redirect_to emplos_path, notice: 'Emplo was successfully created.' }
         format.json { render :show, status: :created, location: @emplo }
       else
         format.html { render :new }
