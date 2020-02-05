@@ -6,41 +6,23 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>グループ1</th>
-      <th>グループ2</th>
-      <th>グループ3</th>
-      <th colspan="3"></th>
+      <th>name</th>
+      <th>section</th>
+      <th>next</th>
+      <th>last</th>
+      <th colspan="1"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% num = 0
-        numtr = 1
-    while numtr <= @n2 do
-    %>
-    <tr class="col-ms-2">
-      <td><%= @aaa[num] %></td>
-      <td><%= @aaa[num + 1] %></td>
-      <td><%= @aaa[num + 2] %></td>
-    </tr>
-    <% 
-    numtr += 1
-    num += 3
-    end %>
-
-    <% num2 = 0
-        numtr2 = 1
-    while numtr2 <= @m2 do
-    %>
-    <tr>
-      <td><%= @bbb[num2] %></td>
-      <td><%= @bbb[num2 + 1] %></td>
-      <td><%= @bbb[num2 + 2] %></td>
-    </tr>
-    <% 
-    numtr2 += 1
-    num2 += 3
-    end %>
+    <% @shuffle.each do |f| %>
+      <tr>
+        <td><%= f.name %></td>
+        <td><%= f.section %></td>
+        <td><%= f.next %></td>
+        <td><%= f.last %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
 <br>
