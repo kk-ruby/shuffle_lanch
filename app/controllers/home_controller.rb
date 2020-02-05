@@ -4,11 +4,27 @@ class HomeController < ApplicationController
   end
 
   def shuffle
-    @group1 = Emplo.where(section: "事務").count.to_i
+    @seizou = Emplo.where(section: "製造")
 
-    for num in range1 do
-      p num[] <<
+    range = (1..@group1 = Emplo.where(section: "製造").count.to_i).to_a
+
+    #配列作成
+    @a = []
+    range.map do |i|
+      @a << i
     end
+
+    @a.shuffle!
+    n = 0
+    
+    #ランダムで取り出してカラムに保存
+    @seizou.each do |f|
+      f.next = @a[n]
+      f.last = @a[n]
+      n += 1
+    end
+
+
 
   end
 

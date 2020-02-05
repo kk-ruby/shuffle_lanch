@@ -3,19 +3,24 @@
 <%= button_to 'シャッフル開始', {controller: 'home', action: 'shuffle'}, {method: :get }%>
 <h5>ランチグループ</h5>
 
-<table class="table table-striped">
+<br>
+<%= @a %>
+<br>
+<br>
+
+<table>
   <thead>
     <tr>
-      <th>name</th>
-      <th>section</th>
+      <th>Name</th>
+      <th>Section</th>
       <th>next</th>
-      <th>last</th>
-      <th colspan="1"></th>
+      <th>Last</th>
+      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @shuffle.each do |f| %>
+    <% @seizou.each do |f| %>
       <tr>
         <td><%= f.name %></td>
         <td><%= f.section %></td>
@@ -25,4 +30,3 @@
     <% end %>
   </tbody>
 </table>
-<br>
