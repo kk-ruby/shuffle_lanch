@@ -1,7 +1,5 @@
-<h3>組み合わせ作成</h3>
 
-<%= button_to 'シャッフル開始', {controller: 'home', action: 'shuffle'}, {method: :get }%>
-<br>
+<div class="container">
 
 <h5>対象者一覧</h5>
 <table>
@@ -16,7 +14,18 @@
   </thead>
 
   <tbody>
-    <% @shuffle.each do |f| %>
+    <% @seizou.each do |f| %>
+      <tr>
+        <td><%= f.name %></td>
+        <td><%= f.section %></td>
+        <td><%= f.next %></td>
+        <td><%= f.last %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+  <tbody>
+    <% @jimu.each do |f| %>
       <tr>
         <td><%= f.name %></td>
         <td><%= f.section %></td>
@@ -27,3 +36,4 @@
   </tbody>
 </table>
 <br>
+</div>
