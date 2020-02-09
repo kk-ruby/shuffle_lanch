@@ -1,11 +1,11 @@
 <div class="container">
   <%= render 'layouts/flash_messages' %>
-  <h3>ランチシャッフル</h3>
+  <h3>研修組み合わせ</h3>
 
   <div class="row">
     <% if @button != "Fixed" %>
-      <%= button_to '再抽選する', {controller: 'home', action: 'shuffle'}, {method: :get, params:{id: "shuffle"}}%>
-      <%= button_to 'グループ確定', {controller: 'home', action: 'shuffle'}, {method: :get, params:{id: "Fixed"}}%>
+      <%= button_to '再抽選する', {controller: 'workshop', action: 'shuffle'}, {method: :get, params:{id: "shuffle"}}%>
+      <%= button_to 'グループ確定', {controller: 'workshop', action: 'shuffle'}, {method: :get, params:{id: "Fixed"}}%>
     <% end %>
   </div>
 
@@ -14,17 +14,37 @@
       <table class="table stripe">
         <thead>
           <tr>
-            <th>グループA</th>
+            <th>グループA 8:30 ~ 10:30</th>
           </tr>
         </thead>
       
         <tbody>
-          <% @shuffle.each do |f| %>
+          <% @seizou.each do |f| %>
             <tr>
-              <% if f.next == 0 %>
                 <td><%= f.name %></td>
                 <td><%= f.next %></td>
                 <td><%= f.last %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-md-4">
+      <table class="table stripe">
+        <thead>
+          <tr>
+            <th>グループB 10:30 ~ 12:30</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @jimu.each do |f| %>
+            <tr>
+              <% if f.k_next == 0 %>
+                <td><%= f.name %></td>
+                <td><%= f.k_next %></td>
+                <td><%= f.k_last %></td>
               <% end %>
             </tr>
           <% end %>
@@ -36,39 +56,17 @@
       <table class="table stripe">
         <thead>
           <tr>
-            <th>グループB</th>
+            <th>グループC 13:30 ~ 15:30</th>
           </tr>
         </thead>
 
         <tbody>
-          <% @shuffle.each do |f| %>
+          <% @jimu.each do |f| %>
             <tr>
-              <% if f.next == 1 %>
+              <% if f.k_next == 1 %>
                 <td><%= f.name %></td>
-                <td><%= f.next %></td>
-                <td><%= f.last %></td>
-              <% end %>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="col-md-4">
-      <table class="table stripe">
-        <thead>
-          <tr>
-            <th>グループC</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% @shuffle.each do |f| %>
-            <tr>
-              <% if f.next == 2 %>
-                <td><%= f.name %></td>
-                <td><%= f.next %></td>
-                <td><%= f.last %></td>
+                <td><%= f.k_next %></td>
+                <td><%= f.k_last %></td>
               <% end %>
             </tr>
           <% end %>

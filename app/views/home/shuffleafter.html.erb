@@ -1,13 +1,7 @@
+
 <div class="container">
   <%= render 'layouts/flash_messages' %>
-  <h3>ランチシャッフル</h3>
-
-  <div class="row">
-    <% if @button != "Fixed" %>
-      <%= button_to '再抽選する', {controller: 'home', action: 'shuffle'}, {method: :get, params:{id: "shuffle"}}%>
-      <%= button_to 'グループ確定', {controller: 'home', action: 'shuffle'}, {method: :get, params:{id: "Fixed"}}%>
-    <% end %>
-  </div>
+  <h3>前回のランチ組み合わせ</h3>
 
   <div class="row">
     <div class="col-md-4">
@@ -21,7 +15,7 @@
         <tbody>
           <% @shuffle.each do |f| %>
             <tr>
-              <% if f.next == 0 %>
+              <% if f.last == 0 %>
                 <td><%= f.name %></td>
                 <td><%= f.next %></td>
                 <td><%= f.last %></td>
@@ -43,7 +37,7 @@
         <tbody>
           <% @shuffle.each do |f| %>
             <tr>
-              <% if f.next == 1 %>
+              <% if f.last == 1 %>
                 <td><%= f.name %></td>
                 <td><%= f.next %></td>
                 <td><%= f.last %></td>
@@ -65,7 +59,7 @@
         <tbody>
           <% @shuffle.each do |f| %>
             <tr>
-              <% if f.next == 2 %>
+              <% if f.last == 2 %>
                 <td><%= f.name %></td>
                 <td><%= f.next %></td>
                 <td><%= f.last %></td>
@@ -75,7 +69,6 @@
         </tbody>
       </table>
     </div>
-
 
   </div>
 </div>
