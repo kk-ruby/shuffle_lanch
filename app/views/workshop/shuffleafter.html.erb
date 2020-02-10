@@ -1,14 +1,13 @@
-
-<div class="container">
-  <%= render 'layouts/flash_messages' %>
+<div class="row mx-5 my-4">
   <h3>前回のランチ組み合わせ</h3>
+</div>
 
-  <div class="row">
+  <div class="row mx-4 mt-5">
     <div class="col-md-4">
-      <table class="table stripe">
+      <table class="table table-hover">
         <thead>
           <tr>
-            <th>グループA</th>
+            <th>グループA 8:30 ~ 10:30</th>
           </tr>
         </thead>
       
@@ -17,8 +16,6 @@
             <tr>
               <% if f.section == "製造" %>
               <td><%= f.name %></td>
-              <td><%= f.next %></td>
-              <td><%= f.last %></td>
               <% end %>
             </tr>
           <% end %>
@@ -27,10 +24,10 @@
     </div>
 
     <div class="col-md-4">
-      <table class="table stripe">
+      <table class="table table-hover">
         <thead>
           <tr>
-            <th>グループB</th>
+            <th>グループB 10:30 ~ 12:30</th>
           </tr>
         </thead>
 
@@ -39,8 +36,6 @@
             <tr>
               <% if f.k_last == 0 %>
                 <td><%= f.name %></td>
-                <td><%= f.k_next %></td>
-                <td><%= f.k_last %></td>
               <% end %>
             </tr>
           <% end %>
@@ -49,10 +44,10 @@
     </div>
 
     <div class="col-md-4">
-      <table class="table stripe">
+      <table class="table table-hover">
         <thead>
           <tr>
-            <th>グループC</th>
+            <th>グループC 13:30 ~ 15:30</th>
           </tr>
         </thead>
 
@@ -61,8 +56,6 @@
             <tr>
               <% if f.k_last == 1 %>
                 <td><%= f.name %></td>
-                <td><%= f.k_next %></td>
-                <td><%= f.k_last %></td>
               <% end %>
             </tr>
           <% end %>

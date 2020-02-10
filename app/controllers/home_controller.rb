@@ -27,7 +27,7 @@ class HomeController < ApplicationController
         f.last = f.next
         f.save
       end
-      flash[:success] = "グループが確定しました"
+      flash[:notice] = "グループが確定しました"
     end
 
     #製造のグループ分け

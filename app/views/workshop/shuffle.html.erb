@@ -1,17 +1,17 @@
-<div class="container">
-  <%= render 'layouts/flash_messages' %>
-  <h3>研修組み合わせ</h3>
+  <div class="row mx-5 my-4">
+    <h3>研修組み合わせ</h3>
+  </div>
 
-  <div class="row">
+  <div class="row mx-5 mt-5">
     <% if @button != "Fixed" %>
-      <%= button_to '再抽選する', {controller: 'workshop', action: 'shuffle'}, {method: :get, params:{id: "shuffle"}}%>
-      <%= button_to 'グループ確定', {controller: 'workshop', action: 'shuffle'}, {method: :get, params:{id: "Fixed"}}%>
+      <%= button_to 'シャッフル！ »', workshop_shuffle_path, class: 'btn btn-outline-danger mr-1',method: :get, params:{id: "shuffle"} %>
+      <%= button_to 'グループ確定 »', workshop_shuffle_path, class: 'btn btn-outline-danger mx-1', method: :get, params:{id: "Fixed"} %>
     <% end %>
   </div>
 
-  <div class="row">
+  <div class="row mx-4 mt-5">
     <div class="col-md-4">
-      <table class="table stripe">
+      <table class="table table-hover">
         <thead>
           <tr>
             <th>グループA 8:30 ~ 10:30</th>
@@ -22,8 +22,6 @@
           <% @seizou.each do |f| %>
             <tr>
                 <td><%= f.name %></td>
-                <td><%= f.next %></td>
-                <td><%= f.last %></td>
             </tr>
           <% end %>
         </tbody>
@@ -31,7 +29,7 @@
     </div>
 
     <div class="col-md-4">
-      <table class="table stripe">
+      <table class="table table-hover">
         <thead>
           <tr>
             <th>グループB 10:30 ~ 12:30</th>
@@ -43,8 +41,6 @@
             <tr>
               <% if f.k_next == 0 %>
                 <td><%= f.name %></td>
-                <td><%= f.k_next %></td>
-                <td><%= f.k_last %></td>
               <% end %>
             </tr>
           <% end %>
@@ -53,7 +49,7 @@
     </div>
 
     <div class="col-md-4">
-      <table class="table stripe">
+      <table class="table table-hover">
         <thead>
           <tr>
             <th>グループC 13:30 ~ 15:30</th>
@@ -65,15 +61,10 @@
             <tr>
               <% if f.k_next == 1 %>
                 <td><%= f.name %></td>
-                <td><%= f.k_next %></td>
-                <td><%= f.k_last %></td>
               <% end %>
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
-
-
   </div>
-</div>

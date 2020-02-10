@@ -14,8 +14,10 @@
   </head>
 
   <body>
-    <%= render 'layouts/alert' %>
+  <div class="container-fluid ">
     <%= render 'layouts/navibar' %>
+    <%= render 'layouts/flash_messages' %>
     <%= yield %>
+  </div>
   </body>
 </html>

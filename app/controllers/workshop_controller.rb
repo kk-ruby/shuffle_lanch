@@ -11,7 +11,7 @@ class WorkshopController < ApplicationController
         f.k_last = f.k_next
         f.save
       end
-      flash[:success] = "グループが確定しました"
+      flash[:notice] = "グループが確定しました"
     end
 
     i = 0
