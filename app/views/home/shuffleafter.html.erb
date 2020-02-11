@@ -1,13 +1,6 @@
 <div class="row mx-5 my-4">
-  <h3>ランチシャッフル</h3>
+  <h3>前回のランチ組み合わせ</h3>
 </div>
-
-  <div class="row mx-5 mt-5">
-    <% if @button != "Fixed" %>
-      <%= button_to 'シャッフル！ »', home_shuffle_path, class: 'btn btn-outline-danger mr-1', method: :get, params:{id: "shuffle"} %>
-      <%= button_to 'グループ確定 »', home_shuffle_path, class: 'btn btn-outline-danger mx-1', method: :get, params:{id: "Fixed"} %>
-    <% end %>
-  </div>
 
   <div class="row mx-4 mt-5">
     <div class="col-md-4">
@@ -17,11 +10,11 @@
             <th>グループA</th>
           </tr>
         </thead>
-      
+
         <tbody>
           <% @shuffle.each do |f| %>
             <tr>
-              <% if f.next == 0 %>
+              <% if f.last == 0 %>
                 <td><%= f.name %></td>
               <% end %>
             </tr>
@@ -41,7 +34,7 @@
         <tbody>
           <% @shuffle.each do |f| %>
             <tr>
-              <% if f.next == 1 %>
+              <% if f.last == 1 %>
                 <td><%= f.name %></td>
               <% end %>
             </tr>
@@ -61,7 +54,7 @@
         <tbody>
           <% @shuffle.each do |f| %>
             <tr>
-              <% if f.next == 2 %>
+              <% if f.last == 2 %>
                 <td><%= f.name %></td>
               <% end %>
             </tr>
@@ -69,4 +62,5 @@
         </tbody>
       </table>
     </div>
+  </div>
 </div>

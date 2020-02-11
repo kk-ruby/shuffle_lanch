@@ -1,44 +1,60 @@
 class HomeController < ApplicationController
   def top
-    @shuffle = Emplo.all
+    @seizou = Emplo.where(section: "製造")
+    @jimu = Emplo.where(section: "事務")
   end
 
   def shuffle
-    @group1 = Emplo.where(section: "製造").sort_by{rand}
-    @n = Emplo.where(section: "製造").count.to_i
-    @n2 = 0
-
-    if (@n % 3) == 0
-      @n2 = (@n / 3)
+    #paramsチェック
+    @button = params[:id]
+    #レコード詰
+    @shuffle = Emplo.all
+    @seizou = Emplo.where(section: "製造")
+    @jimu = Emplo.where(section: "事務")
+    
+    if @button != "Fixed"
+      #シャッフルされた1..nの配列を作成
+      range1 = (1..group1 = Emplo.where(section: "製造").count.to_i).to_a.shuffle!
+      range2 = (1..group2 = Emplo.where(section: "事務").count.to_i).to_a.shuffle!
     else
-      @n2 = (@n / 3) + 1
+      #グループ確定時の動作
+      @seizou.each do |f|
+        f.last = f.next
+        f.save
+      end
+
+      @jimu.each do |f|
+        f.last = f.next
+        f.save
+      end
+      flash[:notice] = "グループが確定しました"
     end
 
-    @aaa = Array.new()
-    numnum = 0 
-
-    @group1.each do |f|
-     @aaa[numnum] = f.name
-     numnum += 1
+    #製造のグループ分け
+    i = 0  
+    @seizou.each do |f|
+      #再抽選の時はセーブしない
+      if @button != "Fixed"
+        f.next = (range1[i] % 3)
+        f.save
+        i += 1
+      end
     end
-
-    @group2 = Emplo.where(section: "事務").sort_by{rand}
-    @m = Emplo.where(section: "事務").count.to_i
-    @m2 = 0
-
-    if (@m % 3) == 0
-      @m2 = (@m / 3)
-    else
-      @m2 = (@m / 3) + 1
+    
+    #事務のグループ分け
+    i = 0
+    @jimu.each do |f|
+      #再抽選の時はセーブしない
+      if @button != "Fixed"
+      f.next = (range2[i] % 3)
+      f.save
+      i += 1
+      end
     end
-
-    @bbb = Array.new()
-    numnum2 = 0 
-
-    @group2.each do |f|
-     @bbb[numnum2] = f.name
-     numnum2 += 1
-    end
-
   end
+
+  def shuffleafter
+    @shuffle = Emplo.all
+  end
+  
 end

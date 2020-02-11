@@ -1,27 +1,40 @@
 <div class="row mx-5 my-4">
-  <h3>ランチシャッフル</h3>
+  <h3>前回のランチ組み合わせ</h3>
 </div>
-
-  <div class="row mx-5 mt-5">
-    <% if @button != "Fixed" %>
-      <%= button_to 'シャッフル！ »', home_shuffle_path, class: 'btn btn-outline-danger mr-1', method: :get, params:{id: "shuffle"} %>
-      <%= button_to 'グループ確定 »', home_shuffle_path, class: 'btn btn-outline-danger mx-1', method: :get, params:{id: "Fixed"} %>
-    <% end %>
-  </div>
 
   <div class="row mx-4 mt-5">
     <div class="col-md-4">
       <table class="table table-hover">
         <thead>
           <tr>
-            <th>グループA</th>
+            <th>グループA 8:30 ~ 10:30</th>
           </tr>
         </thead>
       
         <tbody>
           <% @shuffle.each do |f| %>
             <tr>
-              <% if f.next == 0 %>
+              <% if f.section == "製造" %>
+              <td><%= f.name %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-md-4">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>グループB 10:30 ~ 12:30</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @shuffle.each do |f| %>
+            <tr>
+              <% if f.k_last == 0 %>
                 <td><%= f.name %></td>
               <% end %>
             </tr>
@@ -34,14 +47,14 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th>グループB</th>
+            <th>グループC 13:30 ~ 15:30</th>
           </tr>
         </thead>
 
         <tbody>
           <% @shuffle.each do |f| %>
             <tr>
-              <% if f.next == 1 %>
+              <% if f.k_last == 1 %>
                 <td><%= f.name %></td>
               <% end %>
             </tr>
@@ -50,23 +63,5 @@
       </table>
     </div>
 
-    <div class="col-md-4">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>グループC</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% @shuffle.each do |f| %>
-            <tr>
-              <% if f.next == 2 %>
-                <td><%= f.name %></td>
-              <% end %>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+  </div>
 </div>

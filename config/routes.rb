@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   root 'home#top'
+  
+  get 'workshop/shuffle' => 'workshop#shuffle'
+  get 'workshop/shuffleafter' => 'workshop#shuffleafter'
+  
   get 'home/shuffle' => 'home#shuffle'
+  get 'home/confirm' => 'home#confirm'
+  get 'home/shuffleafter' => 'home#shuffleafter'
   resources :emplos
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
 end

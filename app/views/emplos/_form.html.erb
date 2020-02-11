@@ -1,32 +1,34 @@
-<%= form_with(model: emplo, local: true) do |form| %>
-  <% if emplo.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(emplo.errors.count, "error") %> prohibited this emplo from being saved:</h2>
 
-      <ul>
-        <% emplo.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+
+<div class="form-group mx-5 my-4">
+  <div class="form-horizontal" role="form">
+      <%= form_with(model: emplo, local: true) do |form| %>
+        <% if emplo.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(emplo.errors.count, "error") %> prohibited this emplo from being saved:</h2>
+
+            <ul>
+              <% emplo.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+      <div class="field form-group pt-1 pb-1">
+        <%= form.label :name, :class => "col-md-3 control-label" %>
+        <%= form.text_field :name, class:"form-control col-md-2" %>
+      </div>
+    
+      <div class="field form-group pt-1 pb-5">
+        <%= form.label :section, :class => "col-md-3 control-label" %>
+        <%= form.text_field :section, class:"form-control col-md-2" %>
+      </div>
 
-  <div class="field">
-    <%= form.label :section %>
-    <%= form.text_field :section %>
+      <div class="form-group">
+          <%= form.submit('submit',class: 'btn btn-outline-danger mr-2')  %>
+          <%= link_to ' Back ', emplos_path, class: 'btn btn-outline-danger' %>
+        </div>
+      <% end %>
   </div>
-
-  <div class="field">
-    <%= form.label :last %>
-    <%= form.number_field :last %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

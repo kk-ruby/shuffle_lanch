@@ -4,7 +4,8 @@ class EmplosController < ApplicationController
   # GET /emplos
   # GET /emplos.json
   def index
-    @emplos = Emplo.all
+    @seizou = Emplo.where(section: "製造")
+    @jimu = Emplo.where(section: "事務")
   end
 
   # GET /emplos/1
