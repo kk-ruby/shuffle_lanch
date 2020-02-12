@@ -1,7 +1,7 @@
 class WorkshopController < ApplicationController
   def shuffle
     @button = params[:id]
-    @seizou = Emplo.where(section: "製造")
+    @seizou = Emplo.where(section: "製造").order(:id)
     @jimu = Emplo.where(section: "事務")
 
     if @button != "Fixed"
