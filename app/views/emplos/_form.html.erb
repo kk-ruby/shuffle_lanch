@@ -15,20 +15,30 @@
           </div>
         <% end %>
 
-      <div class="field form-group pt-1 pb-1">
-        <%= form.label :name, :class => "col-md-3 control-label" %>
-        <%= form.text_field :name, class:"form-control col-md-2" %>
+      <div class="field form-group">
+        <%= form.label :name, :class => "col-md-4 control-label" %>
+        <%= form.text_field :name, class:"form-control col-md-3" %>
       </div>
-    
-      <div class="field form-group pt-1 pb-5">
-        <%= form.label :section, :class => "col-md-3 control-label" %>
-        <%= form.text_field :section, class:"form-control col-md-2" %>
+ 
+      <div class="col-sm-2">
+        <%= form.label :section, 'section', class: 'form-label' %>
+      </div>
+
+      <div class="form-group row mb-5">
+        <div class="col-sm-3 btn-group" data-toggle="buttons">
+          <label class="btn btn-outline-danger" style="width:50%">
+            <%= form.radio_button :section, "製造" %>　：製造
+          </label>
+          <label class="btn btn-outline-danger" style="width:50%">
+            <%= form.radio_button :section, "事務" %>　：事務
+          </label>
+        </div>
       </div>
 
       <div class="form-group">
-          <%= form.submit('submit',class: 'btn btn-outline-danger mr-2')  %>
-          <%= link_to ' Back ', emplos_path, class: 'btn btn-outline-danger' %>
-        </div>
+        <%= form.submit('submit',class: 'btn btn-outline-danger mr-2 col-md-1')  %>
+        <%= link_to ' Back ', emplos_path, class: 'btn btn-outline-danger col-md-1' %>
+      </div>
       <% end %>
   </div>
 </div>
