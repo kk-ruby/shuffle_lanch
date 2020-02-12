@@ -49,6 +49,12 @@ test:
 #
 production:
   <<: *default
-  database: shuffle_lanch_production
-  username: shuffle_lanch
-  password: <%= ENV['SHUFFLE_LANCH_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+  #元々の奴
+  #<<: *default
+  #database: shuffle_lanch_production
+  #username: shuffle_lanch
+  #password: <%= ENV['SHUFFLE_LANCH_DATABASE_PASSWORD'] %>
